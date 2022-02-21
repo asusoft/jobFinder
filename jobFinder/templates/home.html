@@ -7,25 +7,19 @@
     <title>Home</title>
     <h1>Home page</h1>
 
-    {% if user.is_authenticated %}
-
-    <h2>Welcome back {{user.username}}</h2>
-    <li><a href="account/profile">Profile</a></li>
-
-    {% else %}
-
-    <li><a href="account/login">Login</a></li>
+    <h2>JOB OPENINGS</h2>
 
     {% for job in jobs %}
 
-    <ul><a href="#">
+    <ul><a href="{% url 'account:view_job_with_pk' pk=job.pk %}">
         <li>{{job.title}}</li>
         <li>{{job.description}}</li>
-        <li>-----</li></a>
+        <li>{{job.location}}</li>
+        <li><p>Posted on: {{job.date}}</li></p>
+        <li>------------------------------------------------------------------</li></a>
       </ul>
 
     {% endfor %}
-    {% endif %}
 </head>
 <body>
     

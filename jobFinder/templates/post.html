@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Job</title>
+    <h1>Job posting page</h1>
+    
+    <li><a href="#">Post job</a></li>
+</head>
+<body>
+    <div>
+        <form method ="post">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter Your Job title"><br>
+            <input type="text" name="description" placeholder="Enter Your job description"><br>
+            <input type="text" name="location" placeholder="Enter location"><br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>

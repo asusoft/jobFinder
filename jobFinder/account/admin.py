@@ -1,6 +1,6 @@
 from django.contrib import admin
-from . models import Opening
+from . models import *
 
 # Register your models here.
 
-admin.site.register(Opening)
+admin.site.register(Vacancies)

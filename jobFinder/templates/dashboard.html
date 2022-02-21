@@ -7,10 +7,25 @@
     <title>Dashboard</title>
     <h1>My Dashboard</h1>
     
-    <li><a href="#">Post job</a></li>
-    <li><a href="./profile">Profile</a></li>
+    <li><a href="./post">Post job</a></li>
+    
+    <li><a href="./logout">Logout</a></li>
+
+    <h1>My Vacancies</h1>
+    {% for job in jobs %}
+
+    {% if job.user == user %}
+    <ul><a href="{% url 'account:view_job_with_pk' pk=job.pk %}">
+        <li>{{job.title}}</li>
+        <li>{{job.description}}</li>
+        <li>{{job.location}}</li>
+        <li><p>Posted on: {{job.date}}</li></p>
+        <li><p>Updated on: {{job.updated}}</li></p>
+        <li>----------------------------------------------------------------------</li></a>
+    </ul>
+    {% endif %}
+    {% endfor %}
 </head>
 <body>
-    
 </body>
 </html>

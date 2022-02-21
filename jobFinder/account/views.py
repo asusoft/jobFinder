@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User, auth
+from .forms import *
 
 def login(request):
     if request.method == 'POST':
@@ -54,8 +55,9 @@ def register(request):
         return render(request, 'signup.html')
    
 
-def profile(request):
-    return render(request, 'profile.html')
+def job(request, pk):
+    job = Vacancies.objects.get(pk=pk)
+    return render(request, 'job.html', {'job': job})
 
 
 def logout(request):
@@ -63,4 +65,23 @@ def logout(request):
     return redirect('/')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    jobs = Vacancies.objects.all().order_by('-date')
+    return render(request, 'dashboard.html', {'jobs': jobs})
+
+def post(request):
+    
+    if request.method == 'POST':
+
+        title = request.POST['title']
+        description = request.POST['description']
+        location = request.POST['location']
+        user = request.user
+
+        Vacancies.objects.create(user = user, title =title, description = description, location = location)
+        return redirect('./dashboard')
+        #return redirect('/')
+
+    return render(request, 'post.html')
+
+    
+   
