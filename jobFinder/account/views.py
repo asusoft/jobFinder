@@ -13,7 +13,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('./dashboard')
         else:
             messages.info(request, 'Incorrect credentials')
             return redirect('./login')
@@ -40,7 +40,7 @@ def register(request):
                 user = User.objects.create_user( username = company_name,password = password,email = email)
                 user.save()
                 messages.info(request, 'Account successfully created')
-                return redirect('./login')
+                return redirect('./dashboard')
                 
                 
         
@@ -61,3 +61,6 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
