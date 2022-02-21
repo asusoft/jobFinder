@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$$-hwx%&$ic#j+8vg)odqy=bsh^#rllb*nr5^vpbi%((_88m0e'
+SECRET_KEY = 'django-insecure-%#udk9qlb!0gjmja99s5k$qw0)y657he6=2(8d5(92h0+0@%eo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,8 +77,11 @@ WSGI_APPLICATION = 'jobFinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jobFinder',
+        'USER': 'postgres',
+        'PASSWORD': 'asusoft',
+        'HOST': 'localhost'
     }
 }
 
