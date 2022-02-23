@@ -18,7 +18,7 @@
     <ul><a href="{% url 'account:view_job_with_pk' pk=job.pk %}">
         <li>{{job.title}}</li>
         <li>{{job.description}}</li>
-        <li>{{job.location}}</li>
+        <li>{{job.city}}, {{job.country}}</li>
         <li><p>Posted on: {{job.date}}</li></p>
         <li><p>Updated on: {{job.updated}}</li></p>
         <li>----------------------------------------------------------------------</li></a>

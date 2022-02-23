@@ -7,7 +7,8 @@ from .forms import Applicant
 class Vacancies(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
     description = models.TextField()
     status = models.BooleanField(default=False)
     date = models.DateField(auto_now_add=True)

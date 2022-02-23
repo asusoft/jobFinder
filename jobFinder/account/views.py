@@ -66,7 +66,7 @@ def logout(request):
 
 def dashboard(request):
     jobs = Vacancies.objects.all().order_by('-date')
-    return render(request, 'dashboard.html', {'jobs': jobs})
+    return render(request, 'newdashboard.html', {'jobs': jobs})
 
 def post(request):
     
@@ -74,10 +74,11 @@ def post(request):
 
         title = request.POST['title']
         description = request.POST['description']
-        location = request.POST['location']
+        city = request.POST['city']
+        country = request.POST['country']
         user = request.user
 
-        Vacancies.objects.create(user = user, title =title, description = description, location = location)
+        Vacancies.objects.create(user = user, title =title, description = description, city = city, country = country)
         return redirect('./dashboard')
         #return redirect('/')
 
