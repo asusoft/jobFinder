@@ -66,7 +66,7 @@ def logout(request):
 
 def dashboard(request):
     jobs = Vacancies.objects.all().order_by('-date')
-    return render(request, 'newdashboard.html', {'jobs': jobs})
+    return render(request, 'dashboard.html', {'jobs': jobs})
 
 def post(request):
     
