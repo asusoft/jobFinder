@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User, auth
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
 def login(request):
     if request.method == 'POST':
@@ -14,7 +15,11 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('./dashboard')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('./dashboard')
+           
         else:
             messages.info(request, 'Incorrect credentials')
             return redirect('./login')
@@ -59,15 +64,17 @@ def job(request, pk):
     job = Vacancies.objects.get(pk=pk)
     return render(request, 'job.html', {'job': job})
 
-
+@login_required(login_url='/account/login')
 def logout(request):
     auth.logout(request)
     return redirect('/')
 
+@login_required(login_url='/account/login')
 def dashboard(request):
     jobs = Vacancies.objects.all().order_by('-date')
     return render(request, 'dashboard.html', {'jobs': jobs})
 
+@login_required(login_url='/account/login')
 def post(request):
     
     if request.method == 'POST':
@@ -85,4 +92,6 @@ def post(request):
     return render(request, 'post.html')
 
     
-   
+def apply(request, pk):
+    job = Vacancies.objects.get(pk=pk)
+    return render(request, 'apply.html', {'job': job})

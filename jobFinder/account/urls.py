@@ -25,6 +25,7 @@ urlpatterns = [
     path('register', views.register, name='SignUp'),
     re_path(r'^job/$', views.job, name='view_job'),
     re_path(r'^job/(?P<pk>\d+)/$', views.job, name='view_job_with_pk'),
+    re_path(r'^apply/(?P<pk>\d+)/$', views.apply, name='apply_job_with_pk'),
     path('logout', views.logout, name='Logout'),
     path('post', views.post, name='Post'),
 ]
