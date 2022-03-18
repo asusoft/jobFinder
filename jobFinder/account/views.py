@@ -83,9 +83,12 @@ def post(request):
         description = request.POST['description']
         city = request.POST['city']
         country = request.POST['country']
+        salary = request.POST['salary']
+        
+        requirements = request.POST['requirements']
         user = request.user
 
-        Vacancies.objects.create(user = user, title =title, description = description, city = city, country = country)
+        Vacancies.objects.create(user = user, title =title, description = description, city = city, country = country, salary = salary, requirements = requirements)
         return redirect('./dashboard')
         #return redirect('/')
 

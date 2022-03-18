@@ -13,4 +13,6 @@ class Vacancies(models.Model):
     status = models.BooleanField(default=False)
     date = models.DateField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    salary = models.IntegerField()
+    requirements = models.TextField()
     applicants = models.ManyToManyField(Applicant,  related_name='job_post')
