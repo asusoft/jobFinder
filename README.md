@@ -7,6 +7,8 @@ First clone the repository from Github and switch to the new directory:
 
 `$ cd {{ project_name }}`
 
+`$ cd jobFinder`
+
 
 Install project dependencies:
 
